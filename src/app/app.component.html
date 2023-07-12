@@ -3,12 +3,14 @@
     <div class="box column is-one-third">
       <h1 class="title has-text-centered">Typing Chalenge</h1>
 
-      <p class="has-text-centered">{{randomText}}</p>
+      <p class="has-text-centered">
+        <span  [class] = "compareLetters(letter, enteredText[i])" *ngFor="let letter of randomText.split('');let i =index">{{letter}}</span>
+      </p>
       <div class="field">
         <input class="input" (input)="onChange($any($event).target.value)" type="text">
       </div>
 
-      <div class="box has-text-centered">
+      <div class="box has-text-centered" *ngIf="enteredText === randomText">
         <h1 class="title">{{message}}</h1>
       </div>
 
